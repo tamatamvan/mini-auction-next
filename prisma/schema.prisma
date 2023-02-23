@@ -92,12 +92,12 @@ enum TrxStatus {
 }
 
 model Transaction {
-    id        String      @id @default(auto()) @map("_id") @db.ObjectId
-    userId    String      @db.ObjectId
-    user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
-    auctionId String      @db.ObjectId
-    auction   AuctionItem @relation(fields: [auctionId], references: [id], onDelete: Cascade)
-    ammount   Int
+    id        String       @id @default(auto()) @map("_id") @db.ObjectId
+    userId    String       @db.ObjectId
+    user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+    auctionId String?      @db.ObjectId
+    auction   AuctionItem? @relation(fields: [auctionId], references: [id], onDelete: Cascade)
+    amount    Int
     datetime  DateTime
     trxType   TrxType
     trxStatus TrxStatus
