@@ -1,9 +1,7 @@
+import PageHeading from '~/components/PageHeading';
+
 const ItemsList = () => {
-  return (
-    <h1 className="text-3xl font-bold text-gray-900 sm:truncate sm:text-4xl sm:tracking-tight">
-      Auction Items
-    </h1>
-  );
+  return <PageHeading>Auction Items</PageHeading>;
 };
 
 export default ItemsList;
