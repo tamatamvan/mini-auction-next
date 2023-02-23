@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { type FC } from 'react';
 import { type Session } from 'next-auth';
 
 import cn from 'classnames';
