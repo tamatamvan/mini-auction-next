@@ -14,7 +14,7 @@ const Home: NextPage = () => {
       </Head>
       <main className="min-h-screen">
         <Navbar />
-        <div className="container mx-auto flex flex-col px-2">
+        <div className="container mx-auto flex flex-col px-2 pt-4">
           <ItemsList />
         </div>
       </main>

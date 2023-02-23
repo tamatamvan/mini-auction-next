@@ -1,6 +1,6 @@
 const ItemsList = () => {
   return (
-    <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+    <h1 className="text-3xl font-bold text-gray-900 sm:truncate sm:text-4xl sm:tracking-tight">
       Auction Items
     </h1>
   );

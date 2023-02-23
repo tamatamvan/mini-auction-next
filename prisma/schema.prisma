@@ -48,13 +48,15 @@ model Session {
 }
 
 model User {
-    id            String    @id @default(auto()) @map("_id") @db.ObjectId
+    id            String        @id @default(auto()) @map("_id") @db.ObjectId
     name          String?
-    email         String?   @unique
+    email         String?       @unique
     emailVerified DateTime?
     image         String?
     accounts      Account[]
     sessions      Session[]
+    Transaction   Transaction[]
+    AuctionItem   AuctionItem[]
 }
 
 model VerificationToken {
@@ -64,4 +66,39 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+model AuctionItem {
+    id            String        @id @default(auto()) @map("_id") @db.ObjectId
+    ownerId       String        @db.ObjectId
+    owner         User          @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+    name          String
+    startTime     DateTime
+    endTime       DateTime
+    startingPrice Int
+    Transaction   Transaction[]
+}
+
+enum TrxType {
+    DEPOSIT
+    BID
+    REFUND
+}
+
+enum TrxStatus {
+    PENDING
+    REJECTED
+    COMPLETED
+}
+
+model Transaction {
+    id        String      @id @default(auto()) @map("_id") @db.ObjectId
+    userId    String      @db.ObjectId
+    user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+    auctionId String      @db.ObjectId
+    auction   AuctionItem @relation(fields: [auctionId], references: [id], onDelete: Cascade)
+    ammount   Int
+    datetime  DateTime
+    trxType   TrxType
+    trxStatus TrxStatus
 }
