@@ -1,7 +1,6 @@
 import { type NextPage } from 'next';
 import Head from 'next/head';
 
-import Navbar from '~/modules/Navbar';
 import ItemsList from '~/modules/ItemsList';
 
 const Home: NextPage = () => {
